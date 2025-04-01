@@ -23,8 +23,8 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            cd /home/projet || git clone git@github.com:ton-utilisateur/ton-repo.git /home/projet
-            cd /home/projet
+            cd /home/git-file/portfolio-ts || git clone git@github.com:lepikeman/portfolio.git /home/git-file/portfolio-t
+            cd /home/git-file/portfolio-t
             git pull origin main
             npm install
             npm run build
