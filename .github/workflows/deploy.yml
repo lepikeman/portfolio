@@ -3,7 +3,7 @@ name: Deploy Next.js to VPS
 on:
   push:
     branches:
-      - main  # Déclenche le déploiement à chaque push sur main
+      - main # Déclenchement du déploiement sur push dans main
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup SSH
+      - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-           ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+          ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             cd ~/site
             git pull origin main
             npm install
