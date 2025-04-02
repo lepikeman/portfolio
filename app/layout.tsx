@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Xhaflaire Axel",
-  description: "Portfolio",
+  description: "Portfolio v3",
 };
 
 export default function RootLayout({
