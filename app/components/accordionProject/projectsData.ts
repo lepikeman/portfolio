@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-import lapizzadulac from "../../assets/lapizzadulac/HomePage.png";
+import lapizzadulac from "../../assets/lapizzadulac/lapizzadulac-fr.png";
 
 export type Project = {
   id: number;
@@ -8,6 +8,7 @@ export type Project = {
   mediaType: "image" | "video";
   mediaSrc: StaticImageData;
   techno: string[];
+  link: string;
 };
 
 export const projects: Project[] = [
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     mediaType: "image",
     mediaSrc: lapizzadulac,
     techno: ["Vue.js", "Tailwind"],
+    link: "https://lapizzadulac.fr",
   },
   {
     id: 2,
@@ -26,6 +28,7 @@ export const projects: Project[] = [
     mediaType: "image",
     mediaSrc: lapizzadulac,
     techno: ["Next.js", "Tailwind", "PostgreSQL"],
+    link: "https://github.com",
   },
   {
     id: 3,
@@ -34,5 +37,6 @@ export const projects: Project[] = [
     mediaType: "image",
     mediaSrc: lapizzadulac,
     techno: ["Python", "Tailwindcss", "MySQL"],
+    link: "https://lapizzadulac.fr",
   },
 ];
