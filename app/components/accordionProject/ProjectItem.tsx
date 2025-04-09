@@ -1,5 +1,6 @@
 import { Project } from "./projectsData";
 import clsx from "clsx";
+import Techno from "../Techno";
 
 type Props = {
   project: Project;
@@ -18,8 +19,13 @@ export default function ProjectItem({ project, isActive, onClick }: Props) {
           : "bg-gray-100 text-black hover:bg-gray-300"
       )}
     >
-      <h3 className="text-lg font-semibold">{project.title}</h3>
-      <p className="text-sm mt-1">{project.description}</p>
+      <div className="h-auto justify-items-start">
+        <h3 className="text-2xl font-semibold">{project.title}</h3>
+        <p className=" mt-1">{project.description}</p>
+        <div className="scale-70">
+          <Techno selectedTechnologies={project.techno} />
+        </div>
+      </div>
     </button>
   );
 }

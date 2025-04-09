@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import {
   SiNextdotjs,
   SiReact,
@@ -9,7 +10,16 @@ import {
   SiVuedotjs,
 } from "react-icons/si";
 
-const technologies = [
+interface Technology {
+  name: string;
+  icon: JSX.Element;
+}
+
+interface TechnoProps {
+  selectedTechnologies: string[]; // Technologies à afficher
+}
+
+const allTechnologies: Technology[] = [
   { name: "Vue.js", icon: <SiVuedotjs className="text-green-500 text-3xl" /> },
   { name: "Next.js", icon: <SiNextdotjs className="text-white text-3xl" /> },
   { name: "React", icon: <SiReact className="text-cyan-400 text-3xl" /> },
@@ -29,12 +39,16 @@ const technologies = [
   { name: "MySQL", icon: <SiMysql className="text-[#00758F] text-3xl" /> },
 ];
 
-export default function Techno() {
+export default function Techno({ selectedTechnologies = [] }: TechnoProps) {
+  // Filtre les technologies à afficher selon celles passées en prop
+  const filteredTechnologies = allTechnologies.filter((tech) =>
+    selectedTechnologies.includes(tech.name)
+  );
+
   return (
-    <div className="py-6">
-      <h2 className="text-2xl">Technologies</h2>
+    <div>
       <div className="flex flex-wrap justify-center gap-4 my-4">
-        {technologies.map((tech) => (
+        {filteredTechnologies.map((tech) => (
           <div
             key={tech.name}
             className="flex items-center gap-3 bg-base-200 px-4 py-2 rounded-full shadow text-lg text-base-content hover:scale-105 transition-transform"

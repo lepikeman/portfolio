@@ -6,9 +6,18 @@ import linkedinLogo from "@/app/assets/linkedin.png";
 import Techno from "./Techno";
 
 export default function AboutPage() {
+  const selectedTechnologies = [
+    "React",
+    "Vue.js",
+    "Next.js",
+    "Tailwind",
+    "TypeScript",
+    "Python",
+    "PostgreSQL",
+    "MySQL",
+  ];
   return (
     <main className="hero min-h-screen px-4">
-      
       <div className="hero-content text-center">
         <div className="max-w-3xl ">
           <h1 className="text-primary text-7xl font-extrabold mb-6">
@@ -17,7 +26,8 @@ export default function AboutPage() {
           <p className="text-lg md:text-xl text-base-content mb-6">
             Fullstack Developper | From France | 26yr old
           </p>
-          <Techno />
+          <h2 className="text-2xl">Technologies</h2>
+          <Techno selectedTechnologies={selectedTechnologies} />
           <div className="flex justify-center gap-6 mb-10">
             <a
               href="https://github.com/lepikeman"

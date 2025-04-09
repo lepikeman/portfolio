@@ -1,9 +1,13 @@
+import { StaticImageData } from "next/image";
+import lapizzadulac from "../../assets/lapizzadulac/HomePage.png";
+
 export type Project = {
   id: number;
   title: string;
   description: string;
   mediaType: "image" | "video";
-  mediaSrc: string;
+  mediaSrc: StaticImageData;
+  techno: string[];
 };
 
 export const projects: Project[] = [
@@ -12,20 +16,23 @@ export const projects: Project[] = [
     title: "La Pizza du Lac",
     description: "Un site statique Vue.js avec Tailwind, responsive et animé.",
     mediaType: "image",
-    mediaSrc: "/app/assets/lapizzadulac/HomePage.png",
+    mediaSrc: lapizzadulac,
+    techno: ["Vue.js", "Tailwind"],
   },
   {
     id: 2,
     title: "Dashboard Admin",
     description: "Interface dynamique avec authentification et CRUD complet.",
-    mediaType: "video",
-    mediaSrc: "/medias/dashboard-demo.mp4",
+    mediaType: "image",
+    mediaSrc: lapizzadulac,
+    techno: ["Next.js", "Tailwind", "PostgreSQL"],
   },
   {
     id: 3,
     title: "Jeu Multijoueur Web",
     description: "Développement d’un jeu en temps réel avec WebSockets.",
     mediaType: "image",
-    mediaSrc: "/medias/game-preview.png",
+    mediaSrc: lapizzadulac,
+    techno: ["Python", "Tailwindcss", "MySQL"],
   },
 ];
