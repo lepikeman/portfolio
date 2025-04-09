@@ -1,13 +1,14 @@
 import Image from "next/image";
 import githubLogo from "@/app/assets/github-logo.png";
 import linkedinLogo from "@/app/assets/linkedin.png";
-import ParticlesBackground from "./ParticulesBackground";
+
+//Components
 import Techno from "./Techno";
 
 export default function AboutPage() {
   return (
     <main className="hero min-h-screen px-4">
-      <ParticlesBackground />
+      
       <div className="hero-content text-center">
         <div className="max-w-3xl ">
           <h1 className="text-primary text-7xl font-extrabold mb-6">
@@ -19,9 +20,10 @@ export default function AboutPage() {
           <Techno />
           <div className="flex justify-center gap-6 mb-10">
             <a
-              href="https://github.com/"
+              href="https://github.com/lepikeman"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:scale-110"
             >
               <Image src={githubLogo} alt="github-logo" width={35} />
             </a>
@@ -29,6 +31,7 @@ export default function AboutPage() {
               href="https://linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
+              className="hover:scale-110"
             >
               <Image src={linkedinLogo} alt="linkedin-logo" width={35} />
             </a>

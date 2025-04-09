@@ -32,7 +32,8 @@ const technologies = [
 export default function Techno() {
   return (
     <div className="py-6">
-      <div className="flex flex-wrap justify-center gap-4">
+      <h2 className="text-2xl">Technologies</h2>
+      <div className="flex flex-wrap justify-center gap-4 my-4">
         {technologies.map((tech) => (
           <div
             key={tech.name}
