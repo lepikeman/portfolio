@@ -45,13 +45,13 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col gap-6 mr-4 z-50">
+      <div className="invisible sm:visible fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col gap-6 mr-4 z-50 sm:invicible">
         {["home", "project", "contact"].map((id) => (
           <a
             key={id}
             href={`#${id}`}
             className={`w-15 h-4 transition-all ${
-              active === id ? "text-primary scale-150" : "text-white"
+              active === id ? "text-primary scale-150" : "text-amber-50"
             }`}
           >
             {id}

@@ -1,7 +1,14 @@
+import AccordionProjects from "./accordionProject";
+
 export default function ProjectPage() {
   return (
     <div>
-      <h1 className="text-9xl">Project</h1>
+      <div className="text-center p-10">
+        <h1 className="text-6xl">Project</h1>
+      </div>
+      <div className="w-full">
+        <AccordionProjects />
+      </div>
     </div>
   );
 }
