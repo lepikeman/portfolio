@@ -3,7 +3,7 @@ name: Deploy Next.js to VPS with Nginx
 on:
   push:
     branches:
-      - main # Déclenchement du déploiement sur push dans main
+      - main
 
 jobs:
   deploy:
@@ -37,17 +37,26 @@ jobs:
             IdentitiesOnly yes
             " > ~/.ssh/config
 
-            echo "🚀 Git pull"
+            echo "🚀 Git pull avec nettoyage forcé"
             eval "$(ssh-agent -s)"
             ssh-add ~/.ssh/id_rsa_github
             cd ~/site
-            git pull origin main
-
-            echo "📦 Install + Build"
-            npm install
+            
+            # Sauvegarde des fichiers importants non versionnés si nécessaire
+            # Exemple: cp .env .env.backup
+            
+            # Nettoyage forcé et récupération des dernières modifications
+            git fetch origin
+            git reset --hard origin/main
+            
+            echo "📦 Nettoyage complet et installation"
+            rm -rf node_modules
             rm -rf .next
-            npm run build
-
+            npm cache clean --force
+            npm install
+            
+            echo "🔨 Build"
+            NODE_ENV=production npm run build
             # Configuration pour production avec Nginx
             echo "📄 Configuration pour production"
               
@@ -56,9 +65,15 @@ jobs:
               
             # Redémarrer Nginx
             sudo systemctl restart nginx
-
-            echo "🔁 PM2 Restart"
-            pm2 restart next-app || pm2 start npm --name "next-app" -- run start
-
+            
+            echo "🔄 Arrêt complet de l'ancienne instance"
+            pm2 delete next-app || true
+            
+            echo "🚀 Démarrage d'une nouvelle instance"
+            pm2 start npm --name "next-app" -- run start
+            
+            echo "🔃 Redémarrage de Nginx"
+            sudo systemctl restart nginx
+            
             echo "✅ Déploiement terminé"
           EOSSH
