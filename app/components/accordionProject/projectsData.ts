@@ -23,7 +23,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Dashboard Admin",
+    title: "Bike shop",
     description: "Interface dynamique avec authentification et CRUD complet.",
     mediaType: "image",
     mediaSrc: lapizzadulac,
