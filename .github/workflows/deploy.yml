@@ -60,14 +60,12 @@ jobs:
             # Configuration pour production avec Nginx
             echo "📄 Configuration pour production"
               
-            # Tester la configuration Nginx
-            sudo nginx -t
-              
-            # Redémarrer Nginx
-            sudo systemctl restart nginx
             
             echo "🔄 Arrêt complet de l'ancienne instance"
             pm2 delete next-app || true
+
+            # Tester la configuration Nginx
+            sudo nginx -t
             
             echo "🚀 Démarrage d'une nouvelle instance"
             pm2 start npm --name "next-app" -- run start
