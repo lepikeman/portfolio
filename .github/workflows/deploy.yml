@@ -1,4 +1,4 @@
-name: Deploy Next.js to VPS
+name: Deploy Next.js to VPS with Nginx
 
 on:
   push:
@@ -48,6 +48,38 @@ jobs:
             rm -rf .next
             npm run build
 
+            # Configuration pour production avec Nginx
+            echo "📄 Configuration pour production"
+            # Créer la configuration Nginx si elle n'existe pas déjà
+            if [ ! -f /etc/nginx/sites-available/nextjs.conf ]; then
+              sudo tee /etc/nginx/sites-available/nextjs.conf > /dev/null << 'NGINX'
+            server {
+              listen 80;
+              server_name your-domain.com; # Remplacer par votre domaine
+
+              location / {
+                proxy_pass http://localhost:3000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+              }
+            }
+            NGINX
+              
+              # Créer le lien symbolique si nécessaire
+              sudo ln -sf /etc/nginx/sites-available/nextjs.conf /etc/nginx/sites-enabled/
+              
+              # Tester la configuration Nginx
+              sudo nginx -t
+              
+              # Redémarrer Nginx
+              sudo systemctl restart nginx
+            fi
+
             echo "🔁 PM2 Restart"
             pm2 restart next-app || pm2 start npm --name "next-app" -- run start
+
+            echo "✅ Déploiement terminé"
           EOF
