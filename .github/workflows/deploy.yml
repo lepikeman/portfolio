@@ -68,16 +68,16 @@ jobs:
           EONGINX'
               
             # Créer le lien symbolique si nécessaire
-            sudo ln -sf /etc/nginx/sites-available/nextjs.conf /etc/nginx/sites-enabled/
+            ln -sf /etc/nginx/sites-available/nextjs.conf /etc/nginx/sites-enabled/
               
             # Tester la configuration Nginx
-            sudo nginx -t
+            nginx -t
               
             # Redémarrer Nginx
-            sudo systemctl restart nginx
+            systemctl restart nginx
 
             echo "🔁 PM2 Restart"
             pm2 restart next-app || pm2 start npm --name "next-app" -- run start
 
-            echo "✅ Déploiement terminé"
+            echo "✅ Déploiement terminé "
           EOSSH
