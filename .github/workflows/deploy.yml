@@ -25,8 +25,9 @@ jobs:
           ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             echo "🔧 Setup clé GitHub"
             mkdir -p ~/.ssh
-            echo "${GITHUB_SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa_github
+            echo "${{ secrets.SSH_PRIVATE_KEY_GIT}}" > ~/.ssh/id_rsa_github
             chmod 600 ~/.ssh/id_rsa_github
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
             echo "💡 Config SSH pour GitHub"
             echo "Host github.com
