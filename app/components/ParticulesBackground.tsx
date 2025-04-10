@@ -53,10 +53,6 @@ export default function ParticlesBackground() {
               enable: true,
               mode: "repulse",
             },
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
           },
           modes: {
             repulse: {

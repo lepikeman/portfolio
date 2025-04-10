@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-import lapizzadulac from "../../assets/lapizzadulac/lapizzadulac-fr.png";
+import lapizzadulac from "../../assets/lapizzadulac/Homepage.png";
 
 export type Project = {
   id: number;
@@ -39,4 +39,5 @@ export const projects: Project[] = [
     techno: ["Python", "Tailwindcss", "MySQL"],
     link: "https://lapizzadulac.fr",
   },
+
 ];

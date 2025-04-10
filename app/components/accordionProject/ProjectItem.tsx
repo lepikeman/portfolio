@@ -1,32 +1,53 @@
 import { Project } from "./projectsData";
-import clsx from "clsx";
 import Techno from "../Techno";
+import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   project: Project;
-  isActive: boolean;
-  onClick: () => void;
 };
 
-export default function ProjectItem({ project, isActive, onClick }: Props) {
+export default function ProjectItem({ project }: Props) {
   return (
-    <button
-      onClick={onClick}
-      className={clsx(
-        "flex w-full text-left p-6 rounded-lg transition-colors duration-300 cursor-pointer items-center",
-        "min-h-45",
-        isActive
-          ? "bg-primary text-primary-content shadow-primary-content"
-          : "bg-gray-100 text-black hover:bg-gray-300"
-      )}
-    >
-      <div className="h-auto justify-items-start w-1/2">
-        <h3 className="text-2xl font-semibold">{project.title}</h3>
-        <p className=" mt-1">{project.description}</p>
+    <div className="flex flex-col h-full bg-base-100 rounded-xl shadow-lg overflow-hidden border border-base-300 hover:shadow-xl transition-all duration-300">
+      {/* Conteneur image avec ratio fixe */}
+      <div className="relative aspect-video w-full overflow-hidden">
+        <Image
+          src={project.mediaSrc}
+          alt={project.title}
+          fill
+          className="object-cover transition-transform duration-500 hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
-      <div className="w-1/2 items-center scale-70">
-        <Techno selectedTechnologies={project.techno} />
+
+      {/* Contenu texte avec hauteur fixe */}
+      <div className="flex flex-col p-5 flex-grow">
+        <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
+          {project.title}
+        </h3>
+        <p className="text-white mb-4 line-clamp-3 flex-grow">
+          {project.description}
+        </p>
       </div>
-    </button>
+
+      {/* Section technologies */}
+      <div className="px-5 pb-5 ">
+        <Techno
+          technologies={project.techno}
+          iconSize="sm"
+          className="justify-center"
+        />
+      </div>
+
+      {/* Bouton (optionnel) */}
+      <Link
+        href={project.link}
+        target="_blank"
+        className="mx-5 mb-5 px-4 py-2 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Voir le projet
+      </Link>
+    </div>
   );
 }

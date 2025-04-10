@@ -15,19 +15,26 @@ export default function AboutPage() {
     "Python",
     "PostgreSQL",
     "MySQL",
+    "Docker",
   ];
   return (
     <main className="hero min-h-screen px-4">
       <div className="hero-content text-center">
-        <div className="max-w-3xl ">
+        <div className="max-w-3xl">
           <h1 className="text-primary text-7xl font-extrabold mb-6">
             Axel Xhaflaire
           </h1>
           <p className="text-lg md:text-xl text-base-content mb-6">
             Fullstack Developper | From France | 26yr old
           </p>
-          <h2 className="text-2xl">Technologies</h2>
-          <Techno selectedTechnologies={selectedTechnologies} />
+          <div>
+            <h2 className="text-2xl">Technologies</h2>
+            <Techno
+              technologies={selectedTechnologies}
+              className="justify-center my-4"
+              iconSize="lg"
+            />
+          </div>
           <div className="flex justify-center gap-6 mb-10">
             <a
               href="https://github.com/lepikeman"
