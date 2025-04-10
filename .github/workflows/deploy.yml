@@ -44,6 +44,7 @@ jobs:
 
             echo "📦 Install + Build"
             npm install
+            chmod -R u+rwX .next
             npm run build
 
             echo "🔁 PM2 Restart"
