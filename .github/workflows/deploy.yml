@@ -20,12 +20,32 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to VPS
+      - name: Deploy over SSH
         run: |
           ssh -i ~/.ssh/id_rsa ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+            echo "🔧 Setup clé GitHub"
+            mkdir -p ~/.ssh
+            echo "${GITHUB_SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa_github
+            chmod 600 ~/.ssh/id_rsa_github
+
+            echo "💡 Config SSH pour GitHub"
+            echo "Host github.com
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_rsa_github
+            IdentitiesOnly yes
+            " > ~/.ssh/config
+
+            echo "🚀 Git pull"
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/id_rsa_github
             cd ~/site
             git pull origin main
+
+            echo "📦 Install + Build"
             npm install
             npm run build
-            pm2 restart next-app || pm2 start npm --name "next-app" -- start
+
+            echo "🔁 PM2 Restart"
+            pm2 restart next-app || pm2 start npm --name "next-app" -- run start
           EOF
