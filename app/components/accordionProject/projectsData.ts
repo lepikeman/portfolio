@@ -39,5 +39,4 @@ export const projects: Project[] = [
     techno: ["Python", "Tailwindcss", "MySQL"],
     link: "https://lapizzadulac.fr",
   },
-
 ];
