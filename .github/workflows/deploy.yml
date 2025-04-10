@@ -75,5 +75,5 @@ jobs:
             echo "🔃 Redémarrage de Nginx"
             sudo systemctl restart nginx
             
-            echo "✅ Déploiement terminé"
+            echo "✅ Déploiement terminé "
           EOSSH
