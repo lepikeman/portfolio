@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-import lapizzadulac from "../../assets/lapizzadulac/Homepage.png";
+import lapizzadulac from "../../assets/lapizzadulac/HomePage.png";
 
 export type Project = {
   id: number;
