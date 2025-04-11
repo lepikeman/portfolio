@@ -21,6 +21,10 @@ export default function AboutPage() {
     <main className="hero min-h-screen px-4">
       <div className="hero-content text-center">
         <div className="max-w-3xl">
+          <div className="flex justify-center items-center gap-2 bg-base-100 rounded-3xl py-2 px-6 mx-auto w-fit mb-6">
+            <p className="text-sm">Available for work</p>
+            <div className="rounded-full w-3 h-3 bg-green-500 shadow-green-500/80 animate-pulse shadow-[0_0_8px_2px]"></div>
+          </div>
           <h1 className="text-primary text-7xl font-extrabold mb-6">
             Axel Xhaflaire
           </h1>
@@ -45,7 +49,7 @@ export default function AboutPage() {
               <Image src={githubLogo} alt="github-logo" width={35} />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://linkedin.com/in/xhaflaireaxel"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:scale-110"

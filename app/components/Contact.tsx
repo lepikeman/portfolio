@@ -19,7 +19,7 @@ export default function ContactPage() {
     <div className="hero min-h-screen p-8 md:p-12 font-mono  items-center">
       <div className="max-w-2xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-3xl  font-bold mb-2">Axel Xhaflaire</h1>
+          <h1 className="text-5xl  font-bold mb-2">Axel Xhaflaire</h1>
           <p className="text-lg">
             Fullstack Developer | From France | 26yr old
           </p>
@@ -49,12 +49,12 @@ export default function ContactPage() {
             <div className="flex items-center">
               <FaLinkedin className="text-xl mr-4" />
               <a
-                href="https://linkedin.com/in/axelx"
+                href="https://linkedin.com/in/xhaflaireaxel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                linkedin.com/in/axelx
+                linkedin.com/in/xhaflaireaxel
               </a>
             </div>
 
