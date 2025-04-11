@@ -1,6 +1,7 @@
 "use client";
 
 import AboutPage from "./components/AboutPage";
+import ContactPage from "./components/Contact";
 import ParticlesBackground from "./components/ParticulesBackground";
 import ProjectPage from "./components/ProjectPage";
 
@@ -40,8 +41,14 @@ export default function Home() {
         <section id="home" className="relative z-10 h-screen snap-start">
           <AboutPage />
         </section>
-        <section id="project" className="relative z-10 h-screen snap-start">
+        <section
+          id="project"
+          className="relative z-10 h-screen snap-start content-center"
+        >
           <ProjectPage />
+        </section>
+        <section id="contact" className="relative z-10 h-screen snap-start">
+          <ContactPage />
         </section>
       </div>
 
