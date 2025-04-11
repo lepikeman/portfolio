@@ -1,22 +1,9 @@
 // app/contact/page.tsx
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
-import Techno from "./Techno";
-
-const selectedTechnologies = [
-  "React",
-  "Vue.js",
-  "Next.js",
-  "Tailwind",
-  "TypeScript",
-  "Python",
-  "PostgreSQL",
-  "MySQL",
-  "Docker",
-];
 
 export default function ContactPage() {
   return (
-    <div className="hero min-h-screen p-8 md:p-12 font-mono  items-center">
+    <div className="hero min-h-[100dvh] p-8 md:p-12 font-mono  items-center">
       <div className="max-w-2xl mx-auto">
         <div className="mb-12">
           <h1 className="text-5xl  font-bold mb-2">Axel Xhaflaire</h1>
@@ -69,13 +56,6 @@ export default function ContactPage() {
                 github.com/lepikeman
               </a>
             </div>
-          </div>
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold mb-6">Technologies</h2>
-
-          <div className="flex flex-wrap gap-3">
-            <Techno technologies={selectedTechnologies} />
           </div>
         </div>
       </div>

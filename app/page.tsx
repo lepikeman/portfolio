@@ -32,7 +32,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative h-screen overflow-hidden m-0">
+    <main className="relative min-w-[100svw] min-h-[100svh] overflow-hidden overflow-x-hidden m-0">
       <ParticlesBackground />
       <div
         className=" relative z-10 h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth"
@@ -52,17 +52,30 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="invisible sm:visible fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col gap-6 mr-4 z-50 sm:invicible">
+      <div className="invisible lg:visible fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col gap-6 mr-4 z-50 sm:invicible">
         {["home", "project", "contact"].map((id) => (
           <a
             key={id}
             href={`#${id}`}
-            className={`w-15 h-4 transition-all ${
+            className={`w-16 h-4 transition-all ${
               active === id ? "text-primary scale-150" : "text-amber-50"
             }`}
           >
             {id}
           </a>
+        ))}
+      </div>
+      <div className="visible lg:invisible flex flex-col z-10 ml-[95dvw] gap-2 fixed top-1/2">
+        {["home", "project", "contact"].map((id) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={`w-16 h-3 transition-all ${
+              active === id
+                ? "rounded-full scale-y-50 bg-primary scale-125"
+                : "rounded-full scale-y-50 scale-80 bg-gray-500"
+            }`}
+          ></a>
         ))}
       </div>
     </main>

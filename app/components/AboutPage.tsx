@@ -18,14 +18,14 @@ export default function AboutPage() {
     "Docker",
   ];
   return (
-    <main className="hero min-h-screen px-4">
+    <main className="hero min-h-[100dvh] items-center">
       <div className="hero-content text-center">
         <div className="max-w-3xl">
           <div className="flex justify-center items-center gap-2 bg-base-100 rounded-3xl py-2 px-6 mx-auto w-fit mb-6">
             <p className="text-sm">Available for work</p>
             <div className="rounded-full w-3 h-3 bg-green-500 shadow-green-500/80 animate-pulse shadow-[0_0_8px_2px]"></div>
           </div>
-          <h1 className="text-primary text-7xl font-extrabold mb-6">
+          <h1 className="text-primary text-5xl md:text-7xl font-extrabold mb-6">
             Axel Xhaflaire
           </h1>
           <p className="text-lg md:text-xl text-base-content mb-6">
