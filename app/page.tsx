@@ -2,6 +2,7 @@
 
 import AboutPage from "./components/AboutPage";
 import ContactPage from "./components/Contact";
+import NavBar from "./components/NavBar";
 import ParticlesBackground from "./components/ParticulesBackground";
 import ProjectPage from "./components/ProjectPage";
 
@@ -34,6 +35,9 @@ export default function Home() {
   return (
     <main className="relative min-w-[100svw] min-h-[100svh] overflow-hidden overflow-x-hidden m-0">
       <ParticlesBackground />
+      <nav className="relative z-5">
+        <NavBar />
+      </nav>
       <div
         className=" relative z-10 h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth"
         id="scroll-container"
