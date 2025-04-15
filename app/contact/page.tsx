@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 
 export default function ContactPage() {
   return (
-    <div className="hero min-h-[100dvh] p-8 md:p-12 font-mono  items-center">
+    <div className="relative hero min-h-[100dvh] p-8 md:p-12 font-mono  items-center">
       <div className="max-w-2xl mx-auto">
         <div className="mb-12">
           <h1 className="text-5xl  font-bold mb-2">Axel Xhaflaire</h1>

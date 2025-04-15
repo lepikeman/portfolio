@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import NavBar from "./components/NavBar";
+import ParticlesBackground from "./components/ParticulesBackground";
 
 const poppins = Poppins({
   weight: "500",
@@ -19,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <ParticlesBackground />
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }

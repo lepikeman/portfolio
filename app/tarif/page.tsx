@@ -6,7 +6,7 @@ export default async function Page() {
   const { data: services } = await supabase.from("service").select("*");
 
   return (
-    <div>
+    <div className="relative">
       {services?.map((service) => (
         <div key={service.id}>
           <h1>{service.name}</h1>

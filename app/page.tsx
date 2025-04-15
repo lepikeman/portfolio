@@ -1,9 +1,6 @@
 "use client";
 
 import AboutPage from "./components/AboutPage";
-import ContactPage from "./components/Contact";
-import NavBar from "./components/NavBar";
-import ParticlesBackground from "./components/ParticulesBackground";
 import ProjectPage from "./components/ProjectPage";
 
 import { useEffect, useState } from "react";
@@ -34,10 +31,6 @@ export default function Home() {
 
   return (
     <main className="relative min-w-[100svw] min-h-[100svh] overflow-hidden overflow-x-hidden m-0">
-      <ParticlesBackground />
-      <nav className="relative z-5">
-        <NavBar />
-      </nav>
       <div
         className=" relative z-10 h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth"
         id="scroll-container"
@@ -51,13 +44,10 @@ export default function Home() {
         >
           <ProjectPage />
         </section>
-        <section id="contact" className="relative z-10 h-screen snap-start">
-          <ContactPage />
-        </section>
       </div>
 
       <div className="invisible lg:visible fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col gap-6 mr-4 z-50 sm:invicible">
-        {["home", "project", "contact"].map((id) => (
+        {["home", "project"].map((id) => (
           <a
             key={id}
             href={`#${id}`}
@@ -70,7 +60,7 @@ export default function Home() {
         ))}
       </div>
       <div className="visible lg:invisible flex flex-col z-10 ml-[95dvw] gap-2 fixed top-1/2">
-        {["home", "project", "contact"].map((id) => (
+        {["home", "project"].map((id) => (
           <a
             key={id}
             href={`#${id}`}
