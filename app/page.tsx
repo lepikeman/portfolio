@@ -1,9 +1,10 @@
 "use client";
 
-import AboutPage from "./components/AboutPage";
-import ProjectPage from "./components/ProjectPage";
-
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+
+const AboutPage = dynamic(() => import("./components/AboutPage"), { loading: () => <div>Chargement de la présentation...</div> });
+const ProjectPage = dynamic(() => import("./components/ProjectPage"), { loading: () => <div>Chargement des projets...</div> });
 
 export default function Home() {
   const [active, setActive] = useState("home");
