@@ -1,5 +1,7 @@
 import { StaticImageData } from "next/image";
 import lapizzadulac from "@/assets/lapizzadulac/HomePage.png";
+import qrenoo from "@/assets/Screen_qrenoo.png";
+import psm from "@/assets/Screen_psm.png";
 
 export type Project = {
   id: number;
@@ -23,20 +25,20 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Bike shop",
-    description: "Interface dynamique avec authentification et CRUD complet.",
+    title: "Projet sur Mesure",
+    description: "Interface dynamique avec admin panel et blog.",
     mediaType: "image",
-    mediaSrc: lapizzadulac,
+    mediaSrc: psm,
     techno: ["Next.js", "Tailwind", "PostgreSQL"],
-    link: "https://github.com",
+    link: "https://projetsurmesure.fr",
   },
   {
     id: 3,
-    title: "Jeu Multijoueur Web",
-    description: "Développement d’un jeu en temps réel avec WebSockets.",
+    title: "Saas Qrenoo",
+    description: "Développement d’un SaaS avec fonctionnalités en temps réel.",
     mediaType: "image",
-    mediaSrc: lapizzadulac,
-    techno: ["Python", "Tailwindcss", "MySQL"],
-    link: "https://lapizzadulac.fr",
+    mediaSrc: qrenoo,
+    techno: ["Next.js", "Node.js", "Tailwind", "MySQL"],
+    link: "https://qrenoo.com",
   },
 ];
