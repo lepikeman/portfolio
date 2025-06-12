@@ -1,17 +1,13 @@
-import { createClient } from "@/utils/supabase/server";
+import { SERVICES_DATA } from "@/constants/index";
 
-export default async function Page() {
-  const supabase = await createClient();
-
-  const { data: services } = await supabase.from("service").select("*");
-
+export default function Page() {
   return (
     <div className="relative">
-      {services?.map((service) => (
-        <div key={service.id}>
-          <h1>{service.name}</h1>
+      {SERVICES_DATA.map((service, index) => (
+        <div key={index}>
+          <h1>{service.title}</h1>
           <p>{service.description}</p>
-          <h2>{service.price} €</h2>
+          <h2>{service.priceRange}</h2>
         </div>
       ))}
     </div>
