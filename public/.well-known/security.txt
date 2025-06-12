@@ -1,0 +1,4 @@
+Contact: mailto:votre-email@example.com
+Expires: 2026-06-12T23:59:59.000Z
+Preferred-Languages: fr, en
+Canonical: https://www.xhaflaireaxel.com/.well-known/security.txt
