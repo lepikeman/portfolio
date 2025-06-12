@@ -1,0 +1,18 @@
+/* TEAM */
+Développeur: Xhaflaire Axel
+Contact: xhaflaire.axel@gmail.com
+GitHub: https://github.com/lepikeman
+LinkedIn: https://linkedin.com/in/xhaflaireaxel
+Location: France
+
+/* THANKS */
+Next.js: https://nextjs.org
+React: https://reactjs.org
+Tailwind CSS: https://tailwindcss.com
+Framer Motion: https://www.framer.com/motion
+
+/* SITE */
+Last update: 2025/06/13
+Language: Français / French
+Doctype: HTML5
+IDE: Visual Studio Code
