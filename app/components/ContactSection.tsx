@@ -9,6 +9,7 @@ import {
   FaMapMarkerAlt,
   FaPaperPlane,
 } from "react-icons/fa";
+import { trackEvent, trackConversion } from "./GoogleAnalytics";
 
 interface FormData {
   name: string;
@@ -46,10 +47,42 @@ export default function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulation d'envoi
-    setTimeout(() => {
+    try {
+      // Validation côté client
+      if (!formData.name || !formData.email || !formData.message) {
+        alert("Veuillez remplir tous les champs obligatoires");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Track form submission
+      trackConversion("contact_form_submission", {
+        event_category: "lead_generation",
+        event_label: "contact_page",
+        project_type: formData.projectType,
+        value: 1,
+      });
+
+      // Envoi vers l'API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Erreur lors de l'envoi");
+      }
+
+      // Succès
       setIsSubmitting(false);
       setIsSubmitted(true);
+
+      // Réinitialisation après 5 secondes
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -59,8 +92,16 @@ export default function ContactSection() {
           projectType: "",
           message: "",
         });
-      }, 3000);
-    }, 2000);
+      }, 5000);
+    } catch (error) {
+      console.error("Erreur:", error);
+      setIsSubmitting(false);
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Erreur lors de l'envoi du message. Veuillez réessayer."
+      );
+    }
   };
 
   if (isSubmitted) {
@@ -111,6 +152,9 @@ export default function ContactSection() {
             <div className="space-y-4">
               <a
                 href="mailto:xhaflaire.axel@gmail.com?subject=Contact%20depuis%20portfolio"
+                onClick={() =>
+                  trackEvent("contact_click", "communication", "email")
+                }
                 className="flex items-center gap-4 p-4 bg-gray-900/50 border border-gray-700 rounded-lg hover:border-blue-500/50 transition-all duration-300 group"
               >
                 <div className="text-xl text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
@@ -124,6 +168,9 @@ export default function ContactSection() {
 
               <a
                 href="tel:+33667394256"
+                onClick={() =>
+                  trackEvent("contact_click", "communication", "phone")
+                }
                 className="flex items-center gap-4 p-4 bg-gray-900/50 border border-gray-700 rounded-lg hover:border-emerald-500/50 transition-all duration-300 group"
               >
                 <div className="text-xl text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300">
@@ -156,6 +203,9 @@ export default function ContactSection() {
                   href="https://linkedin.com/in/xhaflaireaxel"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("social_click", "social_media", "linkedin")
+                  }
                   className="p-3 bg-gray-900/50 border border-gray-700 rounded-lg hover:border-blue-500/50 transition-all duration-300 group"
                 >
                   <FaLinkedin className="text-xl text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
@@ -164,6 +214,9 @@ export default function ContactSection() {
                   href="https://github.com/lepikeman"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("social_click", "social_media", "github")
+                  }
                   className="p-3 bg-gray-900/50 border border-gray-700 rounded-lg hover:border-purple-500/50 transition-all duration-300 group"
                 >
                   <FaGithub className="text-xl text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />

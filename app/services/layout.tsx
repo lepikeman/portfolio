@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Services de Développement Web - Xhaflaire Axel",
@@ -22,6 +22,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/services",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#3b82f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#1d4ed8" },
+  ],
 };
 
 export default function ServicesLayout({

@@ -22,7 +22,7 @@ export const SEO_CONFIG = {
   
   // Analytics
   analytics: {
-    googleAnalytics: 'G-XXXXXXXXXX', // Remplacer par votre ID GA4
+    googleAnalytics: process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX', // Votre ID GA4
   },
   
   // Images par défaut

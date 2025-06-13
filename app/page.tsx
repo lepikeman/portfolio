@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import ParticlesBackground from "./components/ParticulesBackground";
+import HomeStructuredData from "./components/HomeStructuredData";
+import { trackEvent } from "./components/GoogleAnalytics";
 
 const Service = dynamic(() => import("./components/Service"), {
   loading: () => (
@@ -71,6 +73,12 @@ export default function Home() {
           current = section.id;
         }
       });
+
+      // Track section view if changed
+      if (current !== active) {
+        trackEvent("section_view", "navigation", current);
+      }
+
       setActive(current);
     };
 
@@ -80,7 +88,7 @@ export default function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [active]);
 
   const sections = [
     "home",
@@ -94,12 +102,15 @@ export default function Home() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
+      // Track navigation click
+      trackEvent("navigation_click", "scroll_to_section", sectionId);
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <main className="relative min-w-[100vw] overflow-x-hidden">
+      <HomeStructuredData />
       <ParticlesBackground />
 
       {/* Hero Section */}

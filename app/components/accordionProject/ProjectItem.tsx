@@ -2,6 +2,7 @@ import { Project } from "./projectsData";
 import Techno from "../Techno";
 import Image from "next/image";
 import Link from "next/link";
+import { trackEvent } from "../GoogleAnalytics";
 
 type Props = {
   project: Project;
@@ -20,7 +21,6 @@ export default function ProjectItem({ project }: Props) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-
       {/* Contenu texte avec hauteur fixe */}
       <div className="flex flex-col p-5 flex-grow">
         <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
@@ -30,7 +30,6 @@ export default function ProjectItem({ project }: Props) {
           {project.description}
         </p>
       </div>
-
       {/* Section technologies */}
       <div className="px-5 pb-5 ">
         <Techno
@@ -38,12 +37,12 @@ export default function ProjectItem({ project }: Props) {
           iconSize="sm"
           className="justify-center"
         />
-      </div>
-
+      </div>{" "}
       {/* Bouton (optionnel) */}
       <Link
         href={project.link}
         target="_blank"
+        onClick={() => trackEvent("project_view", "portfolio", project.title)}
         className="mx-5 mb-5 px-4 py-2 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition-colors"
       >
         Voir le projet

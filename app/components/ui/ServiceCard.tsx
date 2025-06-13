@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ServiceData } from "@/types";
 import { cn } from "@/lib/utils";
 import { FaCheck, FaArrowRight } from "react-icons/fa";
+import { trackEvent } from "../GoogleAnalytics";
 
 export default function ServiceCard({
   icon,
@@ -61,6 +62,7 @@ export default function ServiceCard({
         </span>
         <Link
           href={`/services/${serviceSlug}`}
+          onClick={() => trackEvent("service_click", "services", title)}
           className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors"
         >
           En savoir plus <FaArrowRight className="text-xs" />

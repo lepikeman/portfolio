@@ -4,6 +4,7 @@ import { SERVICES_DATA } from "@/constants";
 import { scrollToContact } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import ServiceCard from "@/components/ui/ServiceCard";
+import { trackEvent } from "./GoogleAnalytics";
 
 export default function Service() {
   return (
@@ -22,16 +23,17 @@ export default function Service() {
 
           {/* Value Propositions */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 max-w-2xl mx-auto">
-            {[
-              "Livraison Rapide",
-              "Prix Transparents", 
-              "Support Inclus"
-            ].map((value, index) => (
-              <div key={index} className="flex items-center gap-2 justify-center text-gray-400">
-                <span className="w-2 h-2 bg-white rounded-full"></span>
-                <span className="text-sm font-medium">{value}</span>
-              </div>
-            ))}
+            {["Livraison Rapide", "Prix Transparents", "Support Inclus"].map(
+              (value, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 justify-center text-gray-400"
+                >
+                  <span className="w-2 h-2 bg-white rounded-full"></span>
+                  <span className="text-sm font-medium">{value}</span>
+                </div>
+              )
+            )}
           </div>
         </div>
 
@@ -53,7 +55,10 @@ export default function Service() {
           </p>
 
           <Button
-            onClick={scrollToContact}
+            onClick={() => {
+              trackEvent("cta_click", "services_section", "request_quote");
+              scrollToContact();
+            }}
             variant="secondary"
             size="lg"
             className="mb-6"

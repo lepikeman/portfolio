@@ -28,7 +28,7 @@ export const SITE_CONFIG = {
   name: "Axel Xhaflaire",
   title: "Développeur Full-Stack | Axel Xhaflaire",
   description: "Développeur Full-Stack spécialisé en React, Next.js et Node.js. Création de sites web, applications mobiles et APIs performantes.",
-  url: "https://xhaflaireaxel.com",
+  url: "https://www.xhaflaireaxel.com",
   email: "xhaflaire.axel@gmail.com",
   phone: "+33667394256",
   location: "France",

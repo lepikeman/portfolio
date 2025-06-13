@@ -1,5 +1,6 @@
 import AccordionProjects from "./accordionProject";
 import { FaGithub } from "react-icons/fa";
+import { trackEvent } from "./GoogleAnalytics";
 
 // Architecture clean code
 import { scrollToContact } from "@/lib/utils";
@@ -57,13 +58,23 @@ export default function ProjectPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button onClick={scrollToContact} variant="primary" size="lg">
+            <Button
+              onClick={() => {
+                trackEvent("cta_click", "project_section", "start_project");
+                scrollToContact();
+              }}
+              variant="primary"
+              size="lg"
+            >
               Démarrer Mon Projet
             </Button>
             <a
               href="https://github.com/lepikeman"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("external_link", "social_media", "github_projects")
+              }
               className="px-8 py-3 border border-gray-600 text-gray-300 font-medium rounded-lg hover:border-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2"
             >
               <FaGithub /> Voir Plus sur GitHub
